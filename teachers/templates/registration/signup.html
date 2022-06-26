@@ -1,0 +1,37 @@
+{% extends 'layouts/base.html' %}
+<!-- prettier-ignore-->
+{% load crispy_forms_tags %}
+{% block styles %}
+<style>
+    ul.errorlist {
+        display: none;
+    }
+    small{
+        display: none;  
+    }
+</style>
+{% endblock %} {% block content %}
+<div class="register m-auto d-flex flex-column align-items-center mt-5">
+    <div class="card bg-glass">
+        <div class="card-body px-4  px-md-5">
+    <form method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div class="mb-3 col">{{form.username|as_crispy_field}}</div>
+        </div>
+        <div class="row">
+            <div class="mb-3 col">{{form.email|as_crispy_field}}</div>
+        </div>
+        <div class="row">
+            <div class="mb-3 col">{{form.password1|as_crispy_field}}</div>
+        </div>
+        <div class="row">
+            <div class="mb-3 col">{{form.password2|as_crispy_field}}</div>
+        </div>
+        <button type="submit " class="btn btn-primary">Sign Up</button>
+    </form>
+</div>
+</div>
+</div>
+
+{% endblock %}
