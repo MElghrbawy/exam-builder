@@ -1,4 +1,16 @@
 {% extends 'layouts/base.html' %}
-{% block content %} 
-Hooooooooooome5555555555
+{% load static %}
+{% block content %}
+<h1 class="text-center mt-4"> Courses <h1>   
+<div class="courses my-3 pagpagi">
+    {% for course in courses %}
+    <div class="course">
+        <button class="course-title" data-id="{{course.id}}">
+                    {{course.name}} 
+        </button>
+        <button class="course-delete" > X </button>
+    </div>
+    {% endfor %}
+<a class="add" href="#"><button></button></a>
+
 {% endblock %}

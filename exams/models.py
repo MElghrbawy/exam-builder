@@ -4,14 +4,19 @@ from teachers.models import CustomUser
 
 class Course(models.Model):
     name = models.CharField(max_length=150)
-    chapters = models.IntegerField()
+    chapters = models.IntegerField(default=0)
     teacher = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
 
 
 class Chapter(models.Model):
     name = models.CharField(max_length=150)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.name
 
 class Question(models.Model):
     question = models.TextField()
@@ -26,3 +31,4 @@ class Question(models.Model):
         max_length=2,
         choices=[("RM", "Reminding"), ("UD", "Understanding"), ("CR", "Creativity")])
     chapter = models.ForeignKey(Chapter,on_delete=models.CASCADE)
+    
